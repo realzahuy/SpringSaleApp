@@ -5,6 +5,9 @@
 package com.zh.controllers;
 
 import com.zh.services.CategoryService;
+import com.zh.services.ProductService;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class HomeController {
+    @Autowired
     private CategoryService cateService;
+    @Autowired
+    private ProductService prodService;
     @RequestMapping
-    public String index(Model model) {
+    public String index(Model model, Map<String, String> params) {
         model.addAttribute("categories", this.cateService.getCates());
+        model.addAttribute("products", this.prodService.getProducts(params));
         return "index";
     }
 }

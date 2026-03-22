@@ -18,7 +18,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @ComponentScan (
         basePackages = {
-            "com.zh.controllers"
+            "com.zh.controllers",
+            "com.zh.repositories",
+            "com.zh.services"
         }
 )
 @EnableWebMvc
